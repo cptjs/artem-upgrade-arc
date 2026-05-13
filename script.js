@@ -137,7 +137,6 @@
     { text: 'Pre-warming Steam Web API endpoint...', cls: '' },
     { text: 'Loading inventory inspector...', cls: '' },
     { text: 'Reading saved patch notes...', cls: 'muted' },
-    { text: 'WARN: subject historically gloveless.', cls: 'warn' },
     { text: 'Initialization complete.', cls: 'ok' },
     { text: 'Awaiting operator identification...', cls: 'muted' },
   ];
@@ -178,6 +177,10 @@
   // ============================================================
   // SCREEN 2 — Name input
   // ============================================================
+  function propagateName(name) {
+    $$('.dyn-name').forEach((el) => { el.textContent = name; });
+  }
+
   function wireName() {
     const form = $('#form-name');
     const input = $('#input-name');
@@ -192,6 +195,7 @@
         return;
       }
       state.name = v;
+      propagateName(v);
       sfx.confirm();
       goToScreen('ask-steam');
       setTimeout(() => $('#input-steam').focus(), 350);
@@ -402,27 +406,24 @@
   // ============================================================
   // SCREEN 7 — Loot / Case opening
   // ============================================================
-  // CS2-style filler skin names for the carousel (the real drop is the gloves)
-  const fillerSkins = [
-    { name: 'AK-47 | Redline',              rarity: 'pink'   },
-    { name: 'M4A4 | Asiimov',               rarity: 'pink'   },
-    { name: 'AWP | Dragon Lore',            rarity: 'gold'   },
-    { name: 'USP-S | Kill Confirmed',       rarity: 'pink'   },
-    { name: 'Glock-18 | Fade',              rarity: 'pink'   },
-    { name: 'Desert Eagle | Blaze',         rarity: 'pink'   },
-    { name: 'M4A1-S | Hyper Beast',         rarity: 'purple' },
-    { name: 'AK-47 | Vulcan',               rarity: 'pink'   },
-    { name: 'Five-SeveN | Hyper Beast',     rarity: 'purple' },
-    { name: 'P250 | See Ya Later',          rarity: 'purple' },
-    { name: 'Karambit | Doppler',           rarity: 'gold'   },
-    { name: '★ Butterfly Knife | Fade',     rarity: 'gold'   },
-    { name: 'AUG | Akihabara Accept',       rarity: 'gold'   },
-    { name: 'AK-47 | Fire Serpent',         rarity: 'gold'   },
-    { name: 'SSG 08 | Blood in the Water',  rarity: 'purple' },
-    { name: 'Galil AR | Chatterbox',        rarity: 'pink'   },
-    { name: 'MAC-10 | Neon Rider',          rarity: 'pink'   },
-    { name: 'P90 | Death by Kitty',         rarity: 'pink'   },
+  // Common skins (gray/blue, like CS2 mil-spec/industrial) — repeated randomly for carousel filler
+  const commonSkins = [
+    { img: 'assets/images/skin-1.webp' },
+    { img: 'assets/images/skin-2.webp' },
+    { img: 'assets/images/skin-3.webp' },
+    { img: 'assets/images/skin-4.webp' },
+    { img: 'assets/images/skin-5.webp' },
+    { img: 'assets/images/skin-6.webp' },
+    { img: 'assets/images/skin-7.webp' },
+    { img: 'assets/images/skin-8.webp' },
   ];
+  const commonRarities = ['blue', 'light']; // mil-spec blue + consumer/industrial gray
+  // Three guaranteed special items (always appear in same fixed positions of the carousel)
+  const specials = {
+    early:  { img: 'assets/images/skin-knife-start.webp', rarity: 'gold' }, // golden knife near the start
+    midA:   { img: 'assets/images/skin-knife-mid.webp',   rarity: 'gold' }, // another golden knife mid
+    midB:   { img: 'assets/images/skin-ak-red.webp',      rarity: 'red'  }, // red covert AK
+  };
   const gloves = {
     name: '★ Hydra Gloves | Case Hardened',
     rarity: 'gold',
@@ -451,27 +452,29 @@
     const track  = $('#loot-track');
     roller.classList.remove('hidden');
 
-    // Build sequence ending on gloves
-    const sequence = [];
-    const targetCount = 52;
-    while (sequence.length < targetCount - 1) {
-      sequence.push(pick(fillerSkins));
+    // Build sequence: 60 items total, all common except 3 fixed specials + gloves at end
+    const TOTAL = 60;
+    const FINAL_IDX = TOTAL - 1;
+    const sequence = new Array(TOTAL);
+    // Fill with common skins, randomized
+    for (let i = 0; i < TOTAL - 1; i++) {
+      const img = pick(commonSkins).img;
+      const rarity = pick(commonRarities);
+      sequence[i] = { img, rarity };
     }
-    sequence.push(gloves);
-    const finalIndex = sequence.length - 1;
+    // Place specials at fixed-but-jittered positions
+    sequence[randInt(3, 6)]   = { ...specials.early, special: true }; // golden knife near start
+    sequence[randInt(26, 32)] = { ...specials.midA,  special: true }; // golden knife mid
+    sequence[randInt(38, 46)] = { ...specials.midB,  special: true }; // red covert AK mid
+    // Final = gloves
+    sequence[FINAL_IDX] = gloves;
+    const finalIndex = FINAL_IDX;
 
     track.innerHTML = '';
     sequence.forEach((it) => {
       const el = document.createElement('div');
-      el.className = `loot-item r-${it.rarity}${it.img ? ' has-img' : ''}`;
-      if (it.img) {
-        el.innerHTML = `
-          <div class="lr">${it.rarity.toUpperCase()}</div>
-          <div class="loot-item-img"><img src="${it.img}" alt="" /></div>
-          <div class="ln">${escapeHtml(it.name)}</div>`;
-      } else {
-        el.innerHTML = `<div class="lr">${it.rarity.toUpperCase()}</div><div class="ln">${escapeHtml(it.name)}</div>`;
-      }
+      el.className = `loot-item r-${it.rarity}`;
+      el.innerHTML = `<div class="loot-item-only-img"><img src="${it.img}" alt="" /></div>`;
       track.appendChild(el);
     });
 
@@ -677,6 +680,7 @@
       // soft reset
       state.name = '';
       state.steamNick = '';
+      propagateName('player');
       state.club = null; state.style = null;
       state.tool = null; state.obsession = null;
       scanStarted = false;

@@ -1098,6 +1098,34 @@ body {
   box-shadow: 0 0 60px rgba(142,92,255,0.25), inset 0 0 40px rgba(0,0,0,0.4);
   animation: caseFloat 4.4s ease-in-out infinite;
 }
+.loot-case-img {
+  background: linear-gradient(180deg, #1a1024, #0a0410);
+  border-color: rgba(245,196,81,0.45);
+  box-shadow: 0 0 60px rgba(245,196,81,0.25), inset 0 0 40px rgba(0,0,0,0.4);
+}
+.loot-case-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 24px rgba(0,0,0,0.5));
+  z-index: 0;
+}
+.loot-case-img .loot-case-text {
+  position: relative;
+  z-index: 1;
+  align-self: flex-end;
+  margin-bottom: 12px;
+  padding: 6px 14px;
+  background: rgba(0,0,0,0.55);
+  border: 1px solid rgba(245,196,81,0.35);
+  border-radius: 999px;
+  backdrop-filter: blur(6px);
+}
+.loot-case-img .loot-case-text .loot-case-tag { color: var(--gold); font-size: 10px; }
+.loot-case-img .loot-case-text .loot-case-name { font-size: 16px; }
+.loot-case-img { display: flex; align-items: flex-end; justify-content: center; }
 @keyframes caseFloat { 0%,100%{transform: translateY(0)} 50%{transform: translateY(-8px)} }
 .loot-case-shine {
   position: absolute; inset: 0;
@@ -1128,22 +1156,37 @@ body {
 }
 .loot-item {
   flex: 0 0 140px;
-  height: 104px;
+  height: 130px;
   border-radius: 10px;
-  border: 1px solid var(--accent, var(--blue));
-  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(0,0,0,0.2));
-  display: flex; flex-direction: column; justify-content: space-between;
-  padding: 10px 12px;
+  border: 1px solid rgba(255,255,255,0.10);
+  border-bottom: 4px solid var(--accent, var(--blue));
+  background: linear-gradient(180deg, #1c2233 0%, #0d1220 100%);
   position: relative;
   overflow: hidden;
+  display: grid;
+  place-items: center;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
 }
 .loot-item::before {
   content: ""; position: absolute; inset: 0;
-  background: radial-gradient(50% 70% at 50% 100%, var(--accent, var(--blue)), transparent 70%);
-  opacity: 0.22; pointer-events: none;
+  background: radial-gradient(70% 90% at 50% 100%, var(--accent, var(--blue)) 0%, transparent 65%);
+  opacity: 0.22;
+  pointer-events: none;
 }
-.loot-item .lr { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: var(--accent, var(--blue)); }
-.loot-item .ln { font-weight: 700; z-index: 1; font-size: 14px; line-height: 1.2; }
+.loot-item-only-img {
+  position: relative;
+  width: 86%; height: 86%;
+  z-index: 1;
+  display: grid; place-items: center;
+}
+.loot-item-only-img img {
+  max-width: 100%; max-height: 100%;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.55));
+}
+/* Rarity bar shows via border-bottom color via --accent. Extra glow on gold/red */
+.loot-item.r-gold { box-shadow: 0 0 22px rgba(245,196,81,0.35), inset 0 1px 0 rgba(255,255,255,0.06); }
+.loot-item.r-red  { box-shadow: 0 0 18px rgba(255,77,94,0.28),  inset 0 1px 0 rgba(255,255,255,0.06); }
+.r-light { --accent: #b9c4d6; --accent-rgb: 185,196,214; }
 .loot-marker {
   position: absolute;
   top: 0; bottom: 0; left: 50%;
@@ -1470,8 +1513,23 @@ body {
 }
 .club-arsenal .choice-crest  { background: linear-gradient(135deg, #ef0107, #7a0204); color: white; box-shadow: 0 0 24px rgba(239,1,7,0.35); }
 .club-barca   .choice-crest  { background: linear-gradient(135deg, #004d98 0%, #a50044 100%); color: white; box-shadow: 0 0 24px rgba(0,77,152,0.35); }
-.tool-ahrefs  .choice-crest  { background: linear-gradient(135deg, #146BFF, #0a2a66); color: white; box-shadow: 0 0 24px rgba(20,107,255,0.35); }
-.tool-semrush .choice-crest  { background: linear-gradient(135deg, #ff642d, #b53400); color: white; box-shadow: 0 0 24px rgba(255,100,45,0.35); }
+.tool-ahrefs  .choice-crest  { background: linear-gradient(135deg, #1d1f2b, #0a2a66); color: white; box-shadow: 0 0 24px rgba(255,136,0,0.35); }
+.tool-semrush .choice-crest  { background: linear-gradient(135deg, #1d1f2b, #b53400); color: white; box-shadow: 0 0 24px rgba(255,100,45,0.35); }
+
+/* crest with image (club / SEO tool logos) */
+.choice-crest.crest-img {
+  width: 76px;
+  height: 76px;
+  border-radius: 16px;
+  padding: 8px;
+}
+.choice-crest.crest-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4));
+}
 
 .choice-name { font-size: 22px; font-weight: 800; letter-spacing: 0.04em; }
 .choice-tag  { color: var(--muted); font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.06em; }

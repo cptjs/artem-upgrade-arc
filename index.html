@@ -72,7 +72,7 @@
         </label>
         <div class="input-shell">
           <span class="input-prefix" aria-hidden="true">▌</span>
-          <input id="input-name" name="name" type="text" class="input-field" placeholder="Artem" maxlength="32" required />
+          <input id="input-name" name="name" type="text" class="input-field" placeholder="your name" maxlength="32" required />
           <span class="input-caret" aria-hidden="true"></span>
         </div>
         <p class="input-helper" id="name-helper">Press Enter or click Continue.</p>
@@ -90,7 +90,7 @@
       <header class="screen-header">
         <span class="step-chip">STEP 03 / 09 · INVENTORY</span>
         <h2 class="title-lg">Link your Steam profile</h2>
-        <p class="screen-sub" id="steam-sub">We'll need to inspect your CS2 inventory. Don't worry — we already know what's missing.</p>
+        <p class="screen-sub" id="steam-sub">Welcome, <b class="dyn-name">player</b>. We'll need to inspect your CS2 inventory. Don't worry — we already know what's missing.</p>
       </header>
 
       <form id="form-steam" class="input-form" autocomplete="off" novalidate>
@@ -162,13 +162,13 @@
     <section class="screen" data-screen="ask-club" aria-label="Ask club">
       <header class="screen-header">
         <span class="step-chip">STEP 05 / 09 · ALLEGIANCE</span>
-        <h2 class="title-lg">Pick your club</h2>
+        <h2 class="title-lg">Pick your club, <span class="dyn-name">player</span></h2>
         <p class="screen-sub">We need to calibrate your suffering style.</p>
       </header>
 
       <div class="choice-grid" id="club-grid">
         <button class="choice-card club-arsenal" type="button" data-club="arsenal" aria-pressed="false">
-          <div class="choice-crest"><span>ARS</span></div>
+          <div class="choice-crest crest-img"><img src="assets/images/logo-arsenal.svg" alt="Arsenal FC" /></div>
           <div class="choice-name">Arsenal</div>
           <div class="choice-tag">North London · Long-suffering</div>
           <ul class="choice-hint">
@@ -178,7 +178,7 @@
         </button>
 
         <button class="choice-card club-barca" type="button" data-club="barcelona" aria-pressed="false">
-          <div class="choice-crest"><span>BAR</span></div>
+          <div class="choice-crest crest-img"><img src="assets/images/logo-barca.svg" alt="FC Barcelona" /></div>
           <div class="choice-name">Barcelona</div>
           <div class="choice-tag">Catalonia · Aesthetic loss</div>
           <ul class="choice-hint">
@@ -208,12 +208,12 @@
       <header class="screen-header">
         <span class="step-chip">STEP 06 / 09 · SEO PROFILE</span>
         <h2 class="title-lg">Choose your top-1 SEO weapon</h2>
-        <p class="screen-sub">Pick your daily driver. We'll deduce your obsession.</p>
+        <p class="screen-sub">Pick <b class="dyn-name">player</b>'s daily driver. We'll deduce the obsession.</p>
       </header>
 
       <div class="choice-grid" id="tool-grid">
         <button class="choice-card tool-ahrefs" type="button" data-tool="ahrefs" aria-pressed="false">
-          <div class="choice-crest tool-crest"><span>AH</span></div>
+          <div class="choice-crest tool-crest crest-img"><img src="assets/images/logo-ahrefs.svg" alt="Ahrefs" /></div>
           <div class="choice-name">Ahrefs</div>
           <div class="choice-tag">Backlink Audit Connoisseur</div>
           <ul class="choice-hint">
@@ -223,7 +223,7 @@
         </button>
 
         <button class="choice-card tool-semrush" type="button" data-tool="semrush" aria-pressed="false">
-          <div class="choice-crest tool-crest"><span>SR</span></div>
+          <div class="choice-crest tool-crest crest-img"><img src="assets/images/logo-semrush.svg" alt="Semrush" /></div>
           <div class="choice-name">Semrush</div>
           <div class="choice-tag">Position Tracker Maximalist</div>
           <ul class="choice-hint">
@@ -252,13 +252,13 @@
     <section class="screen" data-screen="loot" aria-label="Legendary drop reveal">
       <header class="screen-header">
         <span class="step-chip">STEP 07 / 09 · LEGENDARY DROP</span>
-        <h2 class="title-lg">Profile Compiled · Reward Ready</h2>
+        <h2 class="title-lg">Profile compiled · <span class="dyn-name">Player</span>, your reward is ready</h2>
         <p class="screen-sub" id="loot-sub">Hand slot enhancement incoming.</p>
       </header>
 
       <div class="loot-stage">
-        <div class="loot-case" id="loot-case">
-          <div class="loot-case-shine"></div>
+        <div class="loot-case loot-case-img" id="loot-case">
+          <img class="loot-case-photo" src="assets/images/case.png" alt="Birthday Case" />
           <div class="loot-case-text">
             <div class="loot-case-tag">CASE — BIRTHDAY EDITION</div>
             <div class="loot-case-name">Operation: Artem</div>
@@ -283,14 +283,14 @@
               <img class="loot-final-img" src="assets/images/hydra-gloves.webp" alt="Hydra Gloves Case Hardened" />
             </div>
             <div class="loot-final-name">★ Hydra Gloves <span class="loot-final-pipe">|</span> Case Hardened</div>
-            <p class="loot-final-desc">Pattern-matched. Wear-tested. Birthday-tier.</p>
+            <p class="loot-final-desc">Field-Tested · Birthday drop</p>
             <ul class="loot-final-stats">
-              <li><span>Type</span><b>★ Gloves</b></li>
               <li><span>Wear</span><b>Field-Tested</b></li>
+              <li><span>Pattern</span><b>536</b></li>
+              <li><span>Float</span><b>0.23800483345985413</b></li>
               <li><span>Rarity</span><b class="gold-text">Covert</b></li>
-              <li><span>Float</span><b>0.21</b></li>
-              <li><span>Pattern</span><b>#387</b></li>
-              <li><span>Stickers</span><b>Birthday Foil ×1</b></li>
+              <li><span>Stickers</span><b>none</b></li>
+              <li><span>Type</span><b>★ Gloves</b></li>
             </ul>
           </div>
           <div class="cta-row">
@@ -309,8 +309,8 @@
     <section class="screen" data-screen="claim" aria-label="Claim transfer">
       <header class="screen-header">
         <span class="step-chip">STEP 08 / 09 · TRANSFER</span>
-        <h2 class="title-lg">Transferring asset…</h2>
-        <p class="screen-sub">Hand slot enhancement is being delivered to your real-life inventory.</p>
+        <h2 class="title-lg">Transferring asset to <span class="dyn-name">player</span>…</h2>
+        <p class="screen-sub">Hand slot enhancement is being delivered to <b class="dyn-name">player</b>'s DMarket inventory.</p>
       </header>
 
       <div class="claim-stage">
@@ -327,8 +327,8 @@
             </svg>
           </div>
           <div class="claim-message">
-            <div class="claim-message-title">Перчатки успішно затрансферились до твого інвентарю!</div>
-            <div class="claim-message-sub">★ Hydra Gloves | Case Hardened · доставлено</div>
+            <div class="claim-message-title">Перчатки успішно затрансферились до твого DMarket інвентарю!</div>
+            <div class="claim-message-sub">Виводь на Стім, додавай в лоадаут і тестуй в катці!</div>
           </div>
           <div class="cta-row">
             <button class="cta cta-primary" type="button" data-go="complete">
@@ -344,7 +344,7 @@
     <section class="screen" data-screen="complete" aria-label="Birthday message">
       <header class="screen-header">
         <span class="step-chip">STEP 09 / 09 · BIRTHDAY</span>
-        <h2 class="title-lg accent-gold">З Днем Народження, <span id="bd-name">Artem</span>!</h2>
+        <h2 class="title-lg accent-gold">З Днем Народження, <span id="bd-name" class="dyn-name">Artem</span>!</h2>
         <p class="screen-sub">A message from the DMarket Marketing Team</p>
       </header>
 
@@ -353,7 +353,7 @@
 
         <div class="marketing-portrait">
           <div class="artem-photo" aria-hidden="true">
-            <span class="artem-photo-initials">AR</span>
+            <img src="assets/images/artem.jpg" alt="Artem" />
           </div>
         </div>
 
@@ -361,7 +361,7 @@
           <p class="mk-line-1">SEO God. CS2 Player. Inventory legend.</p>
           <p>You spent the year ranking pages, queueing in Premier, and quietly carrying us in the standings — all with default hands.</p>
           <p>Today the marketing team did something about it. The hand slot is officially upgraded. The DR is forever climbing. The next map is ours.</p>
-          <p class="mk-line-final">Happy Birthday, <span id="bd-name-inline">Artem</span> — from the entire DMarket marketing crew. 🎉</p>
+          <p class="mk-line-final">Happy Birthday, <span id="bd-name-inline" class="dyn-name">Artem</span> — from the entire DMarket marketing crew. 🎉</p>
         </div>
 
         <ul class="marketing-stats">
