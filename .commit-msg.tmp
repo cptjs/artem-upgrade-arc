@@ -1,0 +1,7 @@
+fix: inventory name clipping, carousel item overflow, tiny Ahrefs logo
+
+- Inventory names: single-line ellipsis instead of 2-line clamp, prevents clipping on narrow mobile cards
+- Carousel: roller height 130 -> 168px, item height 130 -> 138px so items fit fully with border + glow
+- Specials: drop transform: scale (was clipping at top/bottom), keep stronger box-shadow glow and thicker bottom rarity bar (6px)
+- Ahrefs SVG: add viewBox, remove fixed 16x16 width/height so it scales to fill the crest container
+- Crest img: switch to width/height 100% with object-fit contain for consistent scaling across SVGs
