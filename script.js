@@ -226,19 +226,19 @@
   // SCREEN 4 — Inventory scan + results
   // ============================================================
   const inventoryItems = [
-    { name: 'AK-47 | Redline',          rarity: 'pink',   icon: 'AK',    tooltip: 'Page-1 staple. Still no gloves.' },
-    { name: 'M4A4 | Asiimov',           rarity: 'pink',   icon: 'M4',    tooltip: 'Solid pickup. Hands remain underdressed.' },
-    { name: 'AWP | Asiimov',            rarity: 'gold',   icon: 'AWP',   tooltip: 'This could have been gloves. Just saying.' },
-    { name: 'USP-S | Kill Confirmed',   rarity: 'pink',   icon: 'USP',   tooltip: 'Nice attempt at looking dangerous.' },
-    { name: 'Glock-18 | Water Elemental', rarity: 'purple', icon: 'GLOCK', tooltip: 'Cute pistol. Cuter hands would be nice.' },
-    { name: 'Service Medal',            rarity: 'gold',   icon: 'MEDAL', tooltip: 'Earned the medal. Still missed the gloves.' },
-    { name: 'Sticker · NAVI Foil',      rarity: 'purple', icon: 'STKR',  tooltip: 'Hope remains a lifestyle.' },
-    { name: 'Sticker · Sprout',         rarity: 'blue',   icon: 'STKR',  tooltip: 'Sticker collection: respectable.' },
-    { name: 'Charm · Lucky Tag',        rarity: 'blue',   icon: 'CHRM',  tooltip: 'Charms exist. Glove slot does not care.' },
-    { name: 'Case · Kilowatt',          rarity: 'blue',   icon: 'CASE',  tooltip: 'Unopened. Like the hand slot — unfortunately.' },
-    { name: 'Case · Recoil',            rarity: 'blue',   icon: 'CASE',  tooltip: 'Page 2 has skins. Hand slot has sadness.' },
-    { name: 'Souvenir AK',              rarity: 'gold',   icon: 'AK',    tooltip: 'Inventory value acceptable. Hand drip unacceptable.' },
-    { name: 'Empty Hand Slot',          rarity: 'red',    icon: 'NONE',  tooltip: 'This is the whole reason we are here.', missing: true },
+    { name: 'MP7 | Smoking Kills',          wear: 'Minimal Wear', img: 'assets/images/inv-mp7-smoking.png',       tooltip: 'Nice SMG. Hands remain default.' },
+    { name: 'AWP | Ice Coaled',             wear: 'Minimal Wear', img: 'assets/images/inv-awp-icecoaled.png',     tooltip: 'Cold blue, even colder hand slot.' },
+    { name: 'M4A1-S | Black Lotus',         wear: 'Minimal Wear', img: 'assets/images/inv-m4a1s-blacklotus.png',  tooltip: 'Premium rifle. Premium gloveless energy.' },
+    { name: 'Glock-18 | Vogue',             wear: 'Factory New',  img: 'assets/images/inv-glock-vogue.png',       tooltip: 'Fashion-forward pistol. Hands stuck in 2014.' },
+    { name: 'M4A4 | Spider Lily',           wear: 'Minimal Wear', img: 'assets/images/inv-m4a4-spiderlily.png',   tooltip: 'Beautiful skin. Bare hands ruin the look.' },
+    { name: '★ Falchion Knife | Doppler',   wear: 'Factory New',  img: 'assets/images/inv-falchion-doppler.png',  tooltip: 'Has a star ★ in front. Hand slot has nothing.' },
+    { name: 'AK-47 | Nightwish',            wear: 'Field-Tested', img: 'assets/images/inv-ak-nightwish.png',      tooltip: 'AK fire detected. Hand drip absent.' },
+    { name: 'AWP | POP AWP',                wear: 'Field-Tested', img: 'assets/images/inv-awp-popawp.png',        tooltip: 'Pop art aesthetic. Hand slot still gray-scale.' },
+    { name: 'Desert Eagle | Serpent Strike',wear: 'Field-Tested', img: 'assets/images/inv-deagle-serpent.png',    tooltip: 'Big iron, naked grip.' },
+    { name: 'FAMAS | ZX Spectron',          wear: 'Well-Worn',    img: 'assets/images/inv-famas-zxspectron.png',  tooltip: 'Cyber French rifle. Hands offline.' },
+    { name: 'M4A4 | Turbine',               wear: 'Field-Tested', img: 'assets/images/inv-m4a4-turbine.png',      tooltip: 'Industrial vibes. Hand slot: under construction.' },
+    { name: 'USP-S | Check Engine',         wear: 'Field-Tested', img: 'assets/images/inv-usps-checkengine.png',  tooltip: 'Check engine on. Check gloves: missing.' },
+    { name: 'GLOVES MISSING',               wear: 'critical',     img: null,                                       tooltip: 'Hand slot empty. This is exactly why we are here.', missing: true },
   ];
 
   function renderInventoryGrid() {
@@ -246,15 +246,24 @@
     if (grid.childElementCount) return;
     inventoryItems.forEach((it) => {
       const card = document.createElement('div');
-      card.className = `inv-item r-${it.rarity}${it.missing ? ' missing' : ''}`;
+      card.className = `inv-item${it.missing ? ' missing' : ''}`;
       card.setAttribute('role', 'listitem');
       card.tabIndex = 0;
-      card.innerHTML = `
-        <div class="inv-rarity">${it.rarity.toUpperCase()}</div>
-        <div class="inv-icon">${it.icon}</div>
-        <div class="inv-name">${escapeHtml(it.name)}</div>
-        <div class="inv-tooltip">${escapeHtml(it.tooltip)}</div>
-      `;
+      if (it.missing) {
+        card.innerHTML = `
+          <div class="inv-warn-badge">⚠</div>
+          <div class="inv-missing-label">★ GLOVES SLOT</div>
+          <div class="inv-name inv-name-missing">No gloves found</div>
+          <div class="inv-tooltip">${escapeHtml(it.tooltip)}</div>
+        `;
+      } else {
+        card.innerHTML = `
+          <div class="inv-img"><img src="${it.img}" alt="${escapeHtml(it.name)}" loading="lazy" /></div>
+          <div class="inv-name">${escapeHtml(it.name)}</div>
+          <div class="inv-wear">${escapeHtml(it.wear)}</div>
+          <div class="inv-tooltip">${escapeHtml(it.tooltip)}</div>
+        `;
+      }
       card.addEventListener('mouseenter', () => {
         $('#inventory-verdict-text').textContent = it.tooltip;
         sfx.click();
@@ -485,7 +494,8 @@
     const finalCenter = finalIndex * itemW + (140 / 2) + 12;
     const targetX = finalCenter - markerX + rand(-22, 22);
 
-    track.style.transition = 'transform 5200ms cubic-bezier(0.12, 0.6, 0.05, 1)';
+    const ROLL_MS = 8400;
+    track.style.transition = `transform ${ROLL_MS}ms cubic-bezier(0.10, 0.55, 0.05, 1)`;
     track.style.transform = `translateX(${-targetX}px)`;
 
     // tick sounds during roll
@@ -493,13 +503,13 @@
     let last = 0;
     (function tick() {
       const dt = performance.now() - t0;
-      const k = clamp(dt / 5200, 0, 1);
-      const rate = (1 - k) * 18 + 3;
+      const k = clamp(dt / ROLL_MS, 0, 1);
+      const rate = (1 - k) * 22 + 2;
       if (dt - last > 1000 / rate) { sfx.click(); last = dt; }
       if (k < 1) requestAnimationFrame(tick);
     })();
 
-    await sleep(5300);
+    await sleep(ROLL_MS + 100);
     // Snap to perfectly centered
     const snapX = finalCenter - markerX;
     track.style.transition = 'transform 380ms cubic-bezier(0.22, 1, 0.36, 1)';
