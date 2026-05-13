@@ -1,0 +1,4 @@
+.commit-msg.tmp
+*.tmp
+Thumbs.db
+.DS_Store
