@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>The Artem Upgrade Arc — bro… we need to talk about your inventory</title>
-  <meta name="description" content="An interactive birthday mini-site for Artem. CS2/DMarket-style upgrade arc. Final drop: gaming gloves." />
+  <meta name="description" content="An interactive birthday mini-site for Artem. CS2/DMarket-style upgrade arc. Final drop: ★ Hydra Gloves." />
   <meta name="theme-color" content="#080b12" />
   <link rel="stylesheet" href="styles.css" />
   <!-- Artem, yes, we checked your inventory. No, this was not a bug. -->
@@ -57,194 +57,82 @@
       </div>
     </section>
 
-    <!-- ============ SCREEN 2: PROFILE ============ -->
-    <section class="screen" data-screen="profile" aria-label="Player profile">
+    <!-- ============ SCREEN 2: NAME ============ -->
+    <section class="screen" data-screen="ask-name" aria-label="Ask name">
       <header class="screen-header">
-        <span class="step-chip">STEP 02 / 09</span>
-        <h2 class="title-lg">Player Profile Loaded</h2>
-        <p class="screen-sub">A rare hybrid build: part analyst, part football romantic, part matchmaking grinder.</p>
+        <span class="step-chip">STEP 02 / 09 · IDENTITY</span>
+        <h2 class="title-lg">Operator, identify yourself</h2>
+        <p class="screen-sub">Type your name to register with the DMarket Birthday Upgrade System.</p>
       </header>
 
-      <div class="profile-card">
-        <div class="profile-left">
-          <div class="avatar" aria-hidden="true">
-            <span class="avatar-initials">AR</span>
-            <span class="avatar-ring"></span>
-          </div>
-          <div class="profile-id">
-            <div class="profile-name">ARTEM</div>
-            <div class="profile-tagline">SEO Specialist · DMarket</div>
-            <div class="badge-row">
-              <span class="badge badge-blue">CS2 Citizen</span>
-              <span class="badge badge-gold">SEO Aura</span>
-              <span class="badge badge-red">Gloveless</span>
-            </div>
-          </div>
+      <form id="form-name" class="input-form" autocomplete="off" novalidate>
+        <label class="input-prompt" for="input-name">
+          <span class="input-prompt-tag">// player name</span>
+          <span class="input-prompt-line">$ register --name</span>
+        </label>
+        <div class="input-shell">
+          <span class="input-prefix" aria-hidden="true">▌</span>
+          <input id="input-name" name="name" type="text" class="input-field" placeholder="Artem" maxlength="32" required />
+          <span class="input-caret" aria-hidden="true"></span>
         </div>
-
-        <div class="profile-stats">
-          <div class="stat-row"><span class="stat-key">Class</span><span class="stat-val">SEO Specialist</span></div>
-          <div class="stat-row"><span class="stat-key">Faction</span><span class="stat-val">DMarket</span></div>
-          <div class="stat-row"><span class="stat-key">Football Allegiance</span><span class="stat-val">Arsenal · Barcelona</span></div>
-          <div class="stat-row"><span class="stat-key">Esports Alignment</span><span class="stat-val">NAVI</span></div>
-          <div class="stat-row"><span class="stat-key">CS2 Rating</span><span class="stat-val">12 000 – 14 000</span></div>
-          <div class="stat-row"><span class="stat-key">Rank Color</span><span class="stat-val accent-blue">Blue</span></div>
-          <div class="stat-row stat-warn"><span class="stat-key">Hand Slot</span><span class="stat-val accent-red">EMPTY</span></div>
-          <div class="stat-row"><span class="stat-key">Main Weakness</span><span class="stat-val">No gloves</span></div>
-          <div class="stat-row"><span class="stat-key">Main Strength</span><span class="stat-val">Still confident</span></div>
-        </div>
-      </div>
-
-      <div class="warning-strip" role="alert">
-        <span class="warning-icon" aria-hidden="true">!</span>
-        <span class="warning-text">No gloves found. Continuing evaluation under protest.</span>
-      </div>
-
-      <div class="cta-row">
-        <button class="cta cta-primary" type="button" data-go="fandom">
-          <span class="cta-label">Validate Fandom Identity</span>
-          <span class="cta-arrow">→</span>
-        </button>
-      </div>
-    </section>
-
-    <!-- ============ SCREEN 3: FANDOM ============ -->
-    <section class="screen" data-screen="fandom" aria-label="Fan loyalty check">
-      <header class="screen-header">
-        <span class="step-chip">STEP 03 / 09</span>
-        <h2 class="title-lg">Fan Loyalty Check</h2>
-        <p class="screen-sub">Click each card to validate identity signals.</p>
-        <div class="progress-mini">
-          <span id="fandom-progress-label">0 / 3 identity signals confirmed</span>
-          <div class="progress-mini-bar"><div id="fandom-progress-fill" class="progress-mini-fill"></div></div>
-        </div>
-      </header>
-
-      <div class="fandom-grid">
-        <button class="fandom-card fandom-arsenal" type="button" data-fandom="arsenal" aria-pressed="false">
-          <div class="fandom-front">
-            <div class="fandom-crest"><span class="crest-text">ARS</span></div>
-            <div class="fandom-name">Arsenal</div>
-            <div class="fandom-tag">North London · Pain Tolerance</div>
-          </div>
-          <div class="fandom-back">
-            <ul class="fandom-stats">
-              <li><span>Emotional damage tolerance</span><b>HIGH</b></li>
-              <li><span>Trust in the process</span><b>PERMANENT</b></li>
-              <li><span>Hope per season</span><b>UNSTABLE BUT RESILIENT</b></li>
-            </ul>
-          </div>
-        </button>
-
-        <button class="fandom-card fandom-barca" type="button" data-fandom="barcelona" aria-pressed="false">
-          <div class="fandom-front">
-            <div class="fandom-crest"><span class="crest-text">BAR</span></div>
-            <div class="fandom-name">Barcelona</div>
-            <div class="fandom-tag">Catalonia · Aesthetic Approval</div>
-          </div>
-          <div class="fandom-back">
-            <ul class="fandom-stats">
-              <li><span>Technical beauty appreciation</span><b>CONFIRMED</b></li>
-              <li><span>Ball IQ</span><b>AESTHETICALLY APPROVED</b></li>
-              <li><span>Legacy bias</span><b>DETECTED</b></li>
-            </ul>
-          </div>
-        </button>
-
-        <button class="fandom-card fandom-navi" type="button" data-fandom="navi" aria-pressed="false">
-          <div class="fandom-front">
-            <div class="fandom-crest"><span class="crest-text">NAVI</span></div>
-            <div class="fandom-name">NAVI</div>
-            <div class="fandom-tag">Born to Win · CS2 Faith</div>
-          </div>
-          <div class="fandom-back">
-            <ul class="fandom-stats">
-              <li><span>CS2 loyalty status</span><b>VALID</b></li>
-              <li><span>“Next map is ours”</span><b>VERY HIGH</b></li>
-              <li><span>Patience curve</span><b>UKRAINIAN-GRADE</b></li>
-            </ul>
-          </div>
-        </button>
-      </div>
-
-      <div id="fandom-verdict" class="verdict-box hidden">
-        <span class="verdict-tag">VERDICT</span>
-        <p>Multi-fandom profile accepted. Subject is emotionally complex but culturally valid.</p>
-      </div>
-
-      <div class="cta-row">
-        <button id="btn-after-fandom" class="cta cta-primary" type="button" data-go="cs2" disabled>
-          <span class="cta-label">Run CS2 Reality Check</span>
-          <span class="cta-arrow">→</span>
-        </button>
-      </div>
-    </section>
-
-    <!-- ============ SCREEN 4: CS2 REALITY ============ -->
-    <section class="screen" data-screen="cs2" aria-label="CS2 reality check">
-      <header class="screen-header">
-        <span class="step-chip">STEP 04 / 09</span>
-        <h2 class="title-lg">Competitive Status Review</h2>
-        <p class="screen-sub">Honest analytics. No filters. No coping.</p>
-      </header>
-
-      <div class="cs2-grid">
-        <div class="cs2-rank-card">
-          <div class="cs2-rank-label">PREMIER RATING</div>
-          <div class="cs2-rank-value">
-            <span class="rank-num" id="rank-num">12 000</span>
-            <span class="rank-sep">—</span>
-            <span class="rank-num">14 000</span>
-          </div>
-          <button id="rank-badge" class="rank-badge" type="button" aria-label="Blue rank badge — click for secret">
-            <span class="rank-badge-dot"></span>
-            <span class="rank-badge-text">BLUE TIER</span>
+        <p class="input-helper" id="name-helper">Press Enter or click Continue.</p>
+        <div class="cta-row">
+          <button type="submit" class="cta cta-primary">
+            <span class="cta-label">Continue</span>
+            <span class="cta-arrow">→</span>
           </button>
-          <div class="cs2-rank-line">respectable, but not scary</div>
         </div>
-
-        <div class="cs2-bars">
-          <div class="bar-row">
-            <div class="bar-label"><span>Aim</span><span class="bar-val">can work</span></div>
-            <div class="bar-track"><div class="bar-fill" style="--w:64%"></div></div>
-          </div>
-          <div class="bar-row">
-            <div class="bar-label"><span>Gamesense</span><span class="bar-val">sometimes active</span></div>
-            <div class="bar-track"><div class="bar-fill" style="--w:58%"></div></div>
-          </div>
-          <div class="bar-row">
-            <div class="bar-label"><span>Confidence</span><span class="bar-val">exceeds statistics</span></div>
-            <div class="bar-track"><div class="bar-fill bar-fill-gold" style="--w:92%"></div></div>
-          </div>
-          <div class="bar-row">
-            <div class="bar-label"><span>Gloves Ownership</span><span class="bar-val accent-red">catastrophically absent</span></div>
-            <div class="bar-track"><div class="bar-fill bar-fill-red" style="--w:2%"></div></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="quote-block">
-        <p>“12–14k means one thing: the man fights. Not a superstar. Not a bot. A citizen.”</p>
-        <p class="quote-foot">— Mechanically stable. Cosmetically underdeveloped.</p>
-      </div>
-
-      <div class="cta-row">
-        <button class="cta cta-primary" type="button" data-go="inventory">
-          <span class="cta-label">Inspect Inventory Evidence</span>
-          <span class="cta-arrow">→</span>
-        </button>
-      </div>
+      </form>
     </section>
 
-    <!-- ============ SCREEN 5: INVENTORY ============ -->
+    <!-- ============ SCREEN 3: STEAM NICK ============ -->
+    <section class="screen" data-screen="ask-steam" aria-label="Ask Steam nick">
+      <header class="screen-header">
+        <span class="step-chip">STEP 03 / 09 · INVENTORY</span>
+        <h2 class="title-lg">Link your Steam profile</h2>
+        <p class="screen-sub" id="steam-sub">We'll need to inspect your CS2 inventory. Don't worry — we already know what's missing.</p>
+      </header>
+
+      <form id="form-steam" class="input-form" autocomplete="off" novalidate>
+        <label class="input-prompt" for="input-steam">
+          <span class="input-prompt-tag">// steam handle</span>
+          <span class="input-prompt-line">$ steam --login</span>
+        </label>
+        <div class="input-shell">
+          <span class="input-prefix" aria-hidden="true">@</span>
+          <input id="input-steam" name="steam" type="text" class="input-field" placeholder="cs2_grinder_2014" maxlength="40" required />
+          <span class="input-caret" aria-hidden="true"></span>
+        </div>
+        <p class="input-helper">Nickname only. No password. We respect the OPSEC.</p>
+        <div class="cta-row">
+          <button type="submit" class="cta cta-primary">
+            <span class="cta-label">Connect Steam</span>
+            <span class="cta-arrow">→</span>
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <!-- ============ SCREEN 4: INVENTORY SCAN ============ -->
     <section class="screen" data-screen="inventory" aria-label="Inventory inspection">
       <header class="screen-header">
-        <span class="step-chip">STEP 05 / 09</span>
+        <span class="step-chip">STEP 04 / 09 · SCAN</span>
         <h2 class="title-lg">Inventory Inspection</h2>
-        <p class="screen-sub">We checked all pages. Even page 2. Still no gloves.</p>
+        <p class="screen-sub" id="inventory-sub">Scanning <b id="scan-nick">player</b>'s CS2 inventory…</p>
       </header>
 
-      <div class="inventory-layout">
+      <!-- Scan progress block (shown first, then hides) -->
+      <div id="scan-progress" class="scan-progress">
+        <div class="scan-line">
+          <span class="scan-line-label" id="scan-label">Establishing handshake with Steam Web API…</span>
+          <span class="scan-line-val" id="scan-percent">0%</span>
+        </div>
+        <div class="scan-track"><div class="scan-fill" id="scan-fill"></div></div>
+        <ul class="scan-log" id="scan-log"></ul>
+      </div>
+
+      <!-- Inventory results (revealed after scan) -->
+      <div class="inventory-layout hidden" id="inventory-results">
         <div id="inventory-grid" class="inventory-grid" role="list"></div>
         <aside class="inventory-side">
           <div class="side-card">
@@ -263,121 +151,109 @@
       </div>
 
       <div class="cta-row">
-        <button class="cta cta-primary" type="button" data-go="drip">
-          <span class="cta-label">Diagnose Hand Slot</span>
+        <button id="btn-after-inventory" class="cta cta-primary hidden" type="button" data-go="ask-club">
+          <span class="cta-label">Continue Profiling</span>
           <span class="cta-arrow">→</span>
         </button>
       </div>
     </section>
 
-    <!-- ============ SCREEN 6: DRIP METER ============ -->
-    <section class="screen" data-screen="drip" aria-label="Drip diagnosis">
+    <!-- ============ SCREEN 5: CLUB + STYLE ============ -->
+    <section class="screen" data-screen="ask-club" aria-label="Ask club">
       <header class="screen-header">
-        <span class="step-chip">STEP 06 / 09</span>
-        <h2 class="title-lg">Drip Calibration Report</h2>
-        <p class="screen-sub">Calculating cosmetic integrity…</p>
+        <span class="step-chip">STEP 05 / 09 · ALLEGIANCE</span>
+        <h2 class="title-lg">Pick your club</h2>
+        <p class="screen-sub">We need to calibrate your suffering style.</p>
       </header>
 
-      <div class="drip-wrap">
-        <div class="drip-meter">
-          <div class="drip-track">
-            <div id="drip-fill" class="drip-fill" style="--w:0%"></div>
-          </div>
-          <div class="drip-numbers">
-            <span class="drip-percent" id="drip-percent">0%</span>
-            <span class="drip-state" id="drip-state">Calibrating…</span>
-          </div>
-        </div>
+      <div class="choice-grid" id="club-grid">
+        <button class="choice-card club-arsenal" type="button" data-club="arsenal" aria-pressed="false">
+          <div class="choice-crest"><span>ARS</span></div>
+          <div class="choice-name">Arsenal</div>
+          <div class="choice-tag">North London · Long-suffering</div>
+          <ul class="choice-hint">
+            <li>Trust the process</li>
+            <li>“This is our year” × 17</li>
+          </ul>
+        </button>
 
-        <ul id="drip-breakdown" class="drip-breakdown">
-          <li><span>Base drip</span><b>+72</b></li>
-          <li><span>Fandom bonus</span><b>+8</b></li>
-          <li><span>NAVI faith</span><b>+7</b></li>
-          <li><span>SEO aura</span><b>+10</b></li>
-          <li><span>Blue rank honesty</span><b>+5</b></li>
-          <li class="penalty"><span>No gloves penalty</span><b>-42</b></li>
-        </ul>
-
-        <div class="drip-final">
-          <div class="drip-final-label">Final Status</div>
-          <div class="drip-final-value">Pre-legendary state — immediate hand slot upgrade required.</div>
-        </div>
+        <button class="choice-card club-barca" type="button" data-club="barcelona" aria-pressed="false">
+          <div class="choice-crest"><span>BAR</span></div>
+          <div class="choice-name">Barcelona</div>
+          <div class="choice-tag">Catalonia · Aesthetic loss</div>
+          <ul class="choice-hint">
+            <li>Beautiful football</li>
+            <li>Complicated finances</li>
+          </ul>
+        </button>
       </div>
 
-      <div class="cta-row">
-        <button class="cta cta-primary" type="button" data-go="boss">
-          <span class="cta-label">Fight Default Hands</span>
-          <span class="cta-arrow">→</span>
-        </button>
+      <div class="choice-result hidden" id="club-result">
+        <div class="choice-result-row">
+          <span class="choice-result-label">DETECTED STYLE</span>
+          <span class="choice-result-value" id="club-style">—</span>
+        </div>
+        <p class="choice-result-text" id="club-style-text">—</p>
+        <div class="cta-row">
+          <button class="cta cta-primary" type="button" data-go="ask-tool">
+            <span class="cta-label">Continue</span>
+            <span class="cta-arrow">→</span>
+          </button>
+        </div>
       </div>
     </section>
 
-    <!-- ============ SCREEN 7: BOSS FIGHT ============ -->
-    <section class="screen" data-screen="boss" aria-label="Boss fight: Default Hands">
+    <!-- ============ SCREEN 6: SEO TOOL + OBSESSION ============ -->
+    <section class="screen" data-screen="ask-tool" aria-label="Ask SEO tool">
       <header class="screen-header">
-        <span class="step-chip">STEP 07 / 09</span>
-        <h2 class="title-lg glitch" data-text="Boss Encounter">Boss Encounter</h2>
-        <p class="screen-sub">The Last Barrier to Drip</p>
+        <span class="step-chip">STEP 06 / 09 · SEO PROFILE</span>
+        <h2 class="title-lg">Choose your top-1 SEO weapon</h2>
+        <p class="screen-sub">Pick your daily driver. We'll deduce your obsession.</p>
       </header>
 
-      <div class="boss-stage" id="boss-stage">
-        <div class="boss-portrait" aria-hidden="true">
-          <div class="boss-hand">
-            <span class="boss-hand-shape"></span>
-            <span class="boss-hand-shadow"></span>
-          </div>
-        </div>
-
-        <div class="boss-info">
-          <div class="boss-name">DEFAULT HANDS</div>
-          <div class="boss-sub">— ancient form. unblessed. unstylized. —</div>
-          <div class="hp-block">
-            <div class="hp-label">
-              <span>HP</span>
-              <span><b id="hp-percent">100</b>%</span>
-            </div>
-            <div class="hp-track">
-              <div id="hp-fill" class="hp-fill" style="--w:100%"></div>
-            </div>
-          </div>
-          <div id="boss-line" class="boss-line">“You don't need gloves.”</div>
-        </div>
-      </div>
-
-      <div class="boss-controls">
-        <div class="attack-grid" id="attack-grid">
-          <button class="attack" type="button" data-attack="Inspect Inventory">Inspect Inventory</button>
-          <button class="attack" type="button" data-attack="Apply Style">Apply Style</button>
-          <button class="attack" type="button" data-attack="Increase Drip">Increase Drip</button>
-          <button class="attack" type="button" data-attack="Support NAVI">Support NAVI</button>
-          <button class="attack" type="button" data-attack="Trust the Process">Trust the Process</button>
-        </div>
-
-        <button id="finisher" class="attack attack-finisher hidden" type="button" data-attack="Equip Respect">
-          <span class="finisher-glow"></span>
-          <span class="finisher-text">EQUIP RESPECT</span>
+      <div class="choice-grid" id="tool-grid">
+        <button class="choice-card tool-ahrefs" type="button" data-tool="ahrefs" aria-pressed="false">
+          <div class="choice-crest tool-crest"><span>AH</span></div>
+          <div class="choice-name">Ahrefs</div>
+          <div class="choice-tag">Backlink Audit Connoisseur</div>
+          <ul class="choice-hint">
+            <li>DR ≥ 80 or it didn't happen</li>
+            <li>Site Explorer is a religion</li>
+          </ul>
         </button>
 
-        <div class="combat-log" aria-live="polite">
-          <div class="combat-log-title">COMBAT LOG</div>
-          <ul id="combat-log" class="combat-log-list"></ul>
-        </div>
+        <button class="choice-card tool-semrush" type="button" data-tool="semrush" aria-pressed="false">
+          <div class="choice-crest tool-crest"><span>SR</span></div>
+          <div class="choice-name">Semrush</div>
+          <div class="choice-tag">Position Tracker Maximalist</div>
+          <ul class="choice-hint">
+            <li>Position drop = personal attack</li>
+            <li>Watches SERP like a hawk</li>
+          </ul>
+        </button>
       </div>
 
-      <div class="cta-row">
-        <button id="btn-after-boss" class="cta cta-primary hidden" type="button" data-go="loot">
-          <span class="cta-label">Open Legendary Drop</span>
-          <span class="cta-arrow">→</span>
-        </button>
+      <div class="choice-result hidden" id="tool-result">
+        <div class="choice-result-row">
+          <span class="choice-result-label">DETECTED OBSESSION</span>
+          <span class="choice-result-value" id="tool-obsession">—</span>
+        </div>
+        <p class="choice-result-text" id="tool-obsession-text">—</p>
+        <div class="cta-row">
+          <button class="cta cta-primary" type="button" data-go="loot">
+            <span class="cta-label">Compile Profile · Receive Drop</span>
+            <span class="cta-arrow">→</span>
+          </button>
+        </div>
       </div>
     </section>
 
-    <!-- ============ SCREEN 8: LOOT REVEAL ============ -->
+    <!-- ============ SCREEN 7: CASE OPENING ============ -->
     <section class="screen" data-screen="loot" aria-label="Legendary drop reveal">
       <header class="screen-header">
-        <span class="step-chip">STEP 08 / 09</span>
-        <h2 class="title-lg">Legendary Drop</h2>
-        <p class="screen-sub">Hand slot enhancement incoming.</p>
+        <span class="step-chip">STEP 07 / 09 · LEGENDARY DROP</span>
+        <h2 class="title-lg">Profile Compiled · Reward Ready</h2>
+        <p class="screen-sub" id="loot-sub">Hand slot enhancement incoming.</p>
       </header>
 
       <div class="loot-stage">
@@ -400,62 +276,100 @@
         </div>
 
         <div id="loot-final" class="loot-final hidden">
-          <div class="loot-final-tag">LEGENDARY GIFT UNLOCKED</div>
+          <div class="loot-final-tag">★ COVERT · LEGENDARY DROP</div>
           <div class="loot-final-card">
             <div class="loot-final-glow"></div>
-            <div class="loot-final-name">Gaming Gloves for Artem</div>
-            <p class="loot-final-desc">For years, Artem fought bravely with uncovered hands. Today, that dark era ends.</p>
+            <div class="loot-final-imgwrap">
+              <img class="loot-final-img" src="assets/images/hydra-gloves.webp" alt="Hydra Gloves Case Hardened" />
+            </div>
+            <div class="loot-final-name">★ Hydra Gloves <span class="loot-final-pipe">|</span> Case Hardened</div>
+            <p class="loot-final-desc">Pattern-matched. Wear-tested. Birthday-tier.</p>
             <ul class="loot-final-stats">
-              <li><span>Drip</span><b>+50</b></li>
-              <li><span>Queue Confidence</span><b>+20</b></li>
-              <li><span>Aim Placebo</span><b>+15</b></li>
-              <li><span>Aura</span><b>+100</b></li>
-              <li><span>Birthday Respect</span><b>+999</b></li>
+              <li><span>Type</span><b>★ Gloves</b></li>
+              <li><span>Wear</span><b>Field-Tested</b></li>
+              <li><span>Rarity</span><b class="gold-text">Covert</b></li>
+              <li><span>Float</span><b>0.21</b></li>
+              <li><span>Pattern</span><b>#387</b></li>
+              <li><span>Stickers</span><b>Birthday Foil ×1</b></li>
             </ul>
           </div>
           <div class="cta-row">
-            <button class="cta cta-primary" type="button" data-go="complete">
-              <span class="cta-label">Claim Legendary Upgrade</span>
+            <button class="cta cta-primary" type="button" data-go="claim">
+              <span class="cta-label">Claim</span>
               <span class="cta-arrow">→</span>
             </button>
           </div>
         </div>
       </div>
 
-      <!-- confetti canvas -->
       <canvas id="confetti" class="confetti" aria-hidden="true"></canvas>
     </section>
 
-    <!-- ============ SCREEN 9: MISSION COMPLETE ============ -->
-    <section class="screen" data-screen="complete" aria-label="Mission complete">
+    <!-- ============ SCREEN 8: CLAIM ============ -->
+    <section class="screen" data-screen="claim" aria-label="Claim transfer">
       <header class="screen-header">
-        <span class="step-chip">STEP 09 / 09</span>
-        <h2 class="title-lg accent-gold">MISSION COMPLETE</h2>
-        <p class="screen-sub">ARTEM UPGRADE ARC FINISHED</p>
+        <span class="step-chip">STEP 08 / 09 · TRANSFER</span>
+        <h2 class="title-lg">Transferring asset…</h2>
+        <p class="screen-sub">Hand slot enhancement is being delivered to your real-life inventory.</p>
       </header>
 
-      <div class="result-card" id="result-card">
-        <div class="result-grid">
-          <ul class="result-stats">
-            <li><span>Football loyalty</span><b class="ok">CONFIRMED</b></li>
-            <li><span>NAVI faith</span><b class="ok">INTACT</b></li>
-            <li><span>CS2 grind</span><b class="ok">RESPECTABLE</b></li>
-            <li><span>Inventory roast</span><b class="ok">SURVIVED</b></li>
-            <li><span>Default Hands</span><b class="ok">ELIMINATED</b></li>
-            <li><span>Legendary item</span><b class="ok">GLOVES</b></li>
-          </ul>
-          <div class="result-side">
-            <div class="result-stamp">LVL UP</div>
-            <div class="result-line">Hand slot: <b>upgraded</b></div>
-            <div class="result-line">Status: <b>Legendary</b></div>
+      <div class="claim-stage">
+        <div class="claim-progress" id="claim-progress">
+          <div class="claim-bar"><div class="claim-bar-fill" id="claim-bar-fill"></div></div>
+          <ul class="claim-log" id="claim-log"></ul>
+        </div>
+
+        <div class="claim-success hidden" id="claim-success">
+          <div class="claim-check" aria-hidden="true">
+            <svg viewBox="0 0 64 64" width="56" height="56">
+              <circle cx="32" cy="32" r="28" fill="none" stroke="currentColor" stroke-width="3" />
+              <path d="M18 33 L28 43 L46 23" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="claim-message">
+            <div class="claim-message-title">Перчатки успішно затрансферились до твого інвентарю!</div>
+            <div class="claim-message-sub">★ Hydra Gloves | Case Hardened · доставлено</div>
+          </div>
+          <div class="cta-row">
+            <button class="cta cta-primary" type="button" data-go="complete">
+              <span class="cta-label">Continue</span>
+              <span class="cta-arrow">→</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SCREEN 9: BIRTHDAY ============ -->
+    <section class="screen" data-screen="complete" aria-label="Birthday message">
+      <header class="screen-header">
+        <span class="step-chip">STEP 09 / 09 · BIRTHDAY</span>
+        <h2 class="title-lg accent-gold">З Днем Народження, <span id="bd-name">Artem</span>!</h2>
+        <p class="screen-sub">A message from the DMarket Marketing Team</p>
+      </header>
+
+      <div class="marketing-card" id="marketing-card">
+        <div class="marketing-stamp">DMARKET · MARKETING</div>
+
+        <div class="marketing-portrait">
+          <div class="artem-photo" aria-hidden="true">
+            <span class="artem-photo-initials">AR</span>
           </div>
         </div>
 
-        <div class="result-message">
-          <p><b>З Днем Народження, Артем!</b></p>
-          <p>You are officially ranked <b>#1</b> in birthday search results.</p>
-          <p>The inventory is finally complete.</p>
+        <div class="marketing-body">
+          <p class="mk-line-1">SEO God. CS2 Player. Inventory legend.</p>
+          <p>You spent the year ranking pages, queueing in Premier, and quietly carrying us in the standings — all with default hands.</p>
+          <p>Today the marketing team did something about it. The hand slot is officially upgraded. The DR is forever climbing. The next map is ours.</p>
+          <p class="mk-line-final">Happy Birthday, <span id="bd-name-inline">Artem</span> — from the entire DMarket marketing crew. 🎉</p>
         </div>
+
+        <ul class="marketing-stats">
+          <li><span>Hand slot</span><b class="ok">UPGRADED</b></li>
+          <li><span>Default Hands</span><b class="ok">RETIRED</b></li>
+          <li><span>Drip rating</span><b class="ok">LEGENDARY</b></li>
+          <li><span>Birthday Respect</span><b class="ok">+999</b></li>
+        </ul>
       </div>
 
       <div class="cta-row cta-row-multi">
